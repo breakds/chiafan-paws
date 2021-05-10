@@ -6,8 +6,8 @@ pkgs.python3Packages.buildPythonApplication rec {
 
   src = pkgs.fetchgit {
     url = "https://github.com/breakds/chiafan.git";
-    rev = "8dadb8d0ce56469c722ea91871d06a03dec52a1d";
-    sha256 = "sha256-1NBJyoUXM+gnp9jkPrI92sj3CuxZgErK1tFiLC+4wnU=";
+    rev = "8880c175f227579068c26d9d51649a388eff9481";
+    sha256 = "sha256-VmWByNOyWhgLXxfHHFREg2Nu1Xx+pkuPyu5PUeOav1g=";
   };
 
   propagatedBuildInputs = with pkgs.python3Packages; [

@@ -6,7 +6,7 @@ let cfg = config.services.chiafan;
 
 in {
   options.services.chiafan = with lib; {
-    farm_key = mkOption {
+    farmKey = mkOption {
       type = types.str;
       description = ''
         The farmer key of the plots that is being plotted.
@@ -17,7 +17,7 @@ in {
       example = "8d3e6ed9dc07e3f38fb7321adc3481a95fbdea515f60ff9737c583c5644c6cf83a5e38e9f3e1fc01d43deef0fa1bd0be";
     };
 
-    pool_key = mkOption {
+    poolKey = mkOption {
       type = types.str;
       description = ''
         The pool key of the plots that is being plotted.
@@ -37,18 +37,19 @@ in {
       path = with pkgs; [
         utillinux
         docker
+        awscli2
       ];
       serviceConfig = {
         Type = "simple";
         ExecStart = ''
           ${chiafan}/bin/chiafan \
-            --farm_key ${cfg.farm_key} \
-            --pool_key ${cfg.pool_key}
+            --farm_key ${cfg.farmKey} \
+            --pool_key ${cfg.poolKey}
         '';
         Restart = "no";
       };
     };
 
-    networking.firewall.allowTCPPorts = [ 5000 ];
+    networking.firewall.allowedTCPPorts = [ 5000 ];
   };
 }
